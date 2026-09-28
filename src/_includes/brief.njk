@@ -1,0 +1,32 @@
+---
+layout: base.njk
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">{{ site.name }}</div>
+    <h1>{{ headline }}</h1>
+    <p class="standfirst">{{ standfirst }}</p>
+  </div>
+</section>
+
+<div class="wrap">
+<article>
+
+  <div class="dateline"><b>Brief #{{ number | pad }}</b> &nbsp;·&nbsp; {{ date | readable }} &nbsp;·&nbsp; {{ readingTime or 'Four minutes' }}</div>
+
+  <p class="lead">{{ lead }}</p>
+
+  <p class="pass" style="margin:26px 0 8px;padding:12px 0 12px 16px;border-left:3px solid var(--gold);color:var(--muted);font-size:16px;line-height:1.6">If one of these is worth somebody else's time, forward it to one person when you are done. That is the whole growth strategy.</p>
+
+{{ content | safe }}
+
+  <p style="margin-top:44px;color:var(--muted)">That is Brief #{{ number | pad }}. See you on the next one.<br><b style="color:var(--ink)">The {{ site.publisher }} Team</b></p>
+
+</article>
+
+  <div class="cta">
+    <h3>Get the next one</h3>
+    <p>The Brief lands at the end of every week. One email, five things, explained plainly.</p>
+    <a class="btn" href="/subscribe/">Subscribe</a>
+  </div>
+</div>

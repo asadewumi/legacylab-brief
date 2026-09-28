@@ -1,0 +1,27 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.name }}</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/"/>
+  <updated>{{ collections.briefs | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ site.url }}/</id>
+  <author>
+    <name>{{ site.publisher }}</name>
+    <uri>{{ site.mainSite }}</uri>
+  </author>
+{%- for brief in collections.briefs %}
+  <entry>
+    <title>Brief #{{ brief.data.number | pad }}: {{ brief.data.headline }}</title>
+    <link href="{{ site.url }}{{ brief.url }}"/>
+    <updated>{{ brief.date | dateToRfc3339 }}</updated>
+    <id>{{ site.url }}{{ brief.url }}</id>
+    <summary>{{ brief.data.summary or brief.data.standfirst }}</summary>
+    <content type="html">{{ brief.content | htmlToAbsoluteUrls(site.url + brief.url) }}</content>
+  </entry>
+{%- endfor %}
+</feed>

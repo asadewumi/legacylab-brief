@@ -1,0 +1,32 @@
+---
+layout: base.njk
+permalink: /index.html
+pageTitle: false
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">A weekly brief</div>
+    <h1>The Legacy<br>Lab Brief</h1>
+    <p class="standfirst">Five things worth knowing, at the end of every week. Technology, creativity and the future of work, explained plainly. Four minutes to read, no filler and no pitch.</p>
+  </div>
+</section>
+
+<main class="brief-list">
+  <div class="wrap">
+{% for brief in collections.briefs %}
+    <a class="brief-card" href="{{ brief.url }}">
+      <div class="meta"><b>Brief #{{ brief.data.number | pad }}</b> &nbsp;·&nbsp; {{ brief.data.date | readable }}</div>
+      <h2>{{ brief.data.headline }}</h2>
+      <p>{{ brief.data.summary or brief.data.standfirst }}</p>
+    </a>
+{% endfor %}
+  </div>
+</main>
+
+<div class="wrap">
+  <div class="cta">
+    <h3>Get the Brief at the end of every week</h3>
+    <p>One email a week. Five things, explained plainly. Unsubscribe any time, in one click.</p>
+    <a class="btn" href="/subscribe/">Subscribe</a>
+  </div>
+</div>

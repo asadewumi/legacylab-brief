@@ -1,0 +1,22 @@
+---
+pagination:
+  data: redirects
+  size: 1
+  alias: r
+permalink: "{{ r.from }}index.html"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Moved</title>
+<link rel="canonical" href="{{ site.url }}{{ r.to }}">
+<meta http-equiv="refresh" content="0; url={{ site.url }}{{ r.to }}">
+<meta name="robots" content="noindex">
+<script>location.replace({{ (site.url + r.to) | dump | safe }});</script>
+</head>
+<body>
+<p>This page has moved to <a href="{{ site.url }}{{ r.to }}">{{ site.url }}{{ r.to }}</a>.</p>
+</body>
+</html>

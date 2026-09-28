@@ -1,0 +1,46 @@
+---
+layout: base.njk
+permalink: /subscribe/index.html
+pageTitle: Subscribe
+pageDescription: Five things worth knowing, at the end of every week. Technology, creativity and the future of work, explained plainly.
+ogTitle: Subscribe to The Legacy Lab Brief
+ogDescription: Five things worth knowing, at the end of every week. Explained plainly.
+navHref: /
+navLabel: Every Brief
+extraCss: |
+  .formbox{margin-top:36px;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--paper)}
+  .formbox iframe{display:block;width:100%;border:0;min-height:340px}
+  .points{margin-top:34px}
+  .points li{list-style:none;padding-left:26px;position:relative;margin-top:14px}
+  .points li:before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;background:var(--gold);border-radius:2px}
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">A weekly brief</div>
+    <h1>Five things,<br>every week</h1>
+    <p class="standfirst">Technology, creativity and the future of work, explained plainly. Four minutes to read, no filler and no pitch.</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <ul class="points">
+    <li>A policy change, a funding move, a genuinely free course, a tool worth using, and a report worth reading.</li>
+    <li>Everything checked before it goes in. If we say something is free, it is free.</li>
+    <li>One email a week. Unsubscribe any time, in one click.</li>
+  </ul>
+
+  <div class="formbox">
+    <iframe
+      src="{{ site.brevoFormUrl }}"
+      scrolling="auto"
+      frameborder="0"
+      title="Subscribe to {{ site.name }}"
+      loading="lazy"></iframe>
+  </div>
+
+  <p style="margin-top:26px;font-size:15px;color:var(--muted)">
+    We will send you one email to say hello and tell you what to expect. Every Brief after that carries a one-click unsubscribe.
+  </p>
+
+</div>

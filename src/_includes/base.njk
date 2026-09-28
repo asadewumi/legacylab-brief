@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% if pageTitle %}{{ pageTitle }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+<meta name="description" content="{{ pageDescription or site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:title" content="{{ ogTitle or pageTitle or site.name }}">
+<meta property="og:description" content="{{ ogDescription or pageDescription or site.description }}">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/{{ ogImage or 'brief-og-default.png' }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+{% if extraCss %}<style>{{ extraCss | safe }}</style>{% endif %}
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="{{ site.mainSite }}"><picture><source srcset="/logo-white.svg" media="(prefers-color-scheme: dark)"><img src="/logo-navy.svg" alt="{{ site.publisher }}"></picture></a>
+    <a class="sub" href="{{ navHref or '/subscribe/' }}">{{ navLabel or 'Subscribe' }}</a>
+  </div>
+</header>
+
+{{ content | safe }}
+
+<footer>
+  <div class="wrap">
+    <div class="fmark"><picture><source srcset="/logo-white.svg" media="(prefers-color-scheme: dark)"><img src="/logo-navy.svg" alt="{{ site.publisher }}"></picture></div>
+    <p>A social-impact digital innovation hub working across technology and innovation, creativity, and the future of work.</p>
+    <div class="links">
+      <a href="/">Every Brief</a>
+      <a href="/feed.xml">RSS</a>
+      <a href="{{ site.mainSite }}">Main site</a>
+      <a href="{{ site.social.instagram }}">Instagram</a>
+      <a href="{{ site.social.linkedin }}">LinkedIn</a>
+      <a href="{{ site.social.x }}">X</a>
+      <a href="{{ site.social.youtube }}">YouTube</a>
+    </div>
+    <div class="fine">{{ site.name }} is published by {{ site.publisher }}.</div>
+  </div>
+</footer>
+
+</body>
+</html>
