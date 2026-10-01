@@ -124,9 +124,9 @@ The feed is now at `/feed.xml`.
 
 ## Still to carry over
 
-See `src/assets/README-assets.md`. Two binary files are live on the old host and are not in this repository yet, the starburst `favicon.svg` and an `apple-touch-icon.png` that has never existed.
+See [`ASSETS.md`](ASSETS.md). The starburst `favicon.svg` was recovered from the old host on 29 September and is in the repository. Two things are still outstanding, an `apple-touch-icon.png` at 180x180 that has never existed, and `brief-og-02.png`, without which Brief #02 falls back to the default preview card.
 
-Brief #02 also has no preview card of its own and falls back to the default. Add `brief-og-02.png` to `src/assets` and set `ogImage` in its front matter.
+Keep internal notes out of `src/`. Anything in `src/assets/` is passed through to the site root and served publicly.
 
 ---
 
@@ -134,6 +134,30 @@ Brief #02 also has no preview card of its own and falls back to the default. Add
 
 `.github/workflows/deploy.yml` runs on every push to `main`. It installs, builds, and publishes `_site/` to GitHub Pages.
 
-For it to work, two things have to be set once in the repository settings. Under Pages, set Source to GitHub Actions. Under Pages again, set the custom domain to `brief.legacylab.ng` and tick Enforce HTTPS once the certificate has issued.
+### This repository must stay public
 
-The DNS change is four A records on `brief` pointing at GitHub's Pages addresses, replacing the single A record that currently points at the cPanel host. Do not touch the root domain or any MX record. Mail is not involved and must not move.
+GitHub Pages is not available on a private repository on a free plan. Making this repository private takes brief.legacylab.ng off the internet immediately, and it does it quietly. There is no warning, no email and no failed build. The last workflow run keeps its green tick and the deployment still reads Active, while the site serves GitHub's own "There isn't a GitHub Pages site here" 404.
+
+It also clears two settings that then have to be put back by hand. The custom domain resets to blank, and Source resets from GitHub Actions to Deploy from a branch.
+
+This happened once, between 29 September and 1 October 2026. Because DNS had already left the old host, the Brief served nothing at all for the whole period, and every archive link in the emails and posts already sent was dead.
+
+**If the site ever returns a 404, check repository visibility before anything else.** DNS and the CNAME file were both correct throughout that outage and neither was the cause.
+
+If this repository ever has to be private, move the Brief to another host first, not after.
+
+### Settings, set once
+
+Under Pages, set Source to GitHub Actions. Under Pages again, set the custom domain to `brief.legacylab.ng` and tick Enforce HTTPS once the certificate has issued.
+
+### DNS
+
+`brief` is a subdomain, so it takes a single CNAME. This supersedes an earlier version of this file that called for four A records, which is the guidance for an apex domain and is wrong here.
+
+```
+brief    CNAME    asadewumi.github.io.
+```
+
+A CNAME cannot coexist with any other record for the same name, so delete every existing record at `brief` before adding it. cPanel rejects the zone otherwise, with `CNAME and other data`.
+
+Do not touch the root domain or any MX record. Mail is not involved and must not move.
