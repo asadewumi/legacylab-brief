@@ -10,7 +10,9 @@ readingTime: Four minutes
 
 ## From us, before the five
 
-The Fortieth edition recording, Ifeoluwa I. Areola, Brand Identity Designer, on Breaking the AI Template, is still in edit. We said last week that it would be in this Brief. It is not, so we will link it when it is actually up rather than promise it a third time.
+The Fortieth edition recording is up. Ifeoluwa I. Areola, Brand Identity Designer, on Breaking the AI Template, Creating Non-Generic Designs. It runs just over an hour and it is on our YouTube channel in full.
+
+<a class="more" href="https://www.youtube.com/watch?v=IUuF1PJ2JSA">Watch the recording</a>
 
 Registration for the Forty-First edition is open, and the link is at the foot of this Brief.
 
